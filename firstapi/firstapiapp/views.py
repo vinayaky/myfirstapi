@@ -34,7 +34,7 @@ class UserProfileView(APIView):
     def patch(self, request):
     
         try:
-            profile = UserProfile.objects.get(user=self.request.user)
+            profile = UserProfile.objects.get(user=request.user.username)
         except UserProfile.DoesNotExist:
             return Response({'error': 'Profile not found.'}, status=status.HTTP_404_NOT_FOUND)
 
